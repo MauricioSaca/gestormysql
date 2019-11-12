@@ -147,7 +147,7 @@ public class Loguin extends javax.swing.JFrame {//Inicio de la clase
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
        ////////////Validaciones por medio de estructuras condicionales/////////////////////
-        if(txtNombre.getText().equals("Admin")&&txtContra.getText().equals("Creaj")){//Inicio del if
+        if(txtNombre.getText().equals("admin")&&txtContra.getText().equals("admin")){//Inicio del if
         //Si el usuario y el password son correctos nos muestra el menu
             new Menu().setVisible(true);//Creacion del Objeto Menu
             this.dispose();//Hacemos una referencia al objeto menu y que libere el recurso utilizado

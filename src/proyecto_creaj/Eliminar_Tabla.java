@@ -4,6 +4,7 @@ package proyecto_creaj;
 //Importancion de paquetes
 import cdb.edu.util.Conexion;
 import cdb.edu.util.Mostrar;
+import cdb.edu.util.analizador_lexico_db;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -34,8 +35,11 @@ public class Eliminar_Tabla extends javax.swing.JFrame {
         cmbBases = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         cmbTablas = new javax.swing.JComboBox();
-        btnEliminarTabla = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnCrear = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtQuery = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,20 +61,51 @@ public class Eliminar_Tabla extends javax.swing.JFrame {
         jLabel2.setText("Tablas de la base de datos");
         jLabel2.setToolTipText("");
 
-        btnEliminarTabla.setText("Eliminar");
-        btnEliminarTabla.setEnabled(false);
-        btnEliminarTabla.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)), "Crear Base de datos"));
+
+        btnCrear.setText("Ejecutar");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarTablaActionPerformed(evt);
+                btnCrearActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
+
+        txtQuery.setColumns(20);
+        txtQuery.setRows(5);
+        jScrollPane1.setViewportView(txtQuery);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrear)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,10 +124,8 @@ public class Eliminar_Tabla extends javax.swing.JFrame {
                             .addComponent(cmbTablas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(80, 80, 80))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEliminarTabla)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addContainerGap())))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +138,9 @@ public class Eliminar_Tabla extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbBases, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTablas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminarTabla)
-                    .addComponent(jButton1))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,7 +157,7 @@ public class Eliminar_Tabla extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,41 +175,59 @@ public class Eliminar_Tabla extends javax.swing.JFrame {
         } else {
             //Ejecutamos otro metodo de la objeto_mostrar para visualizar las tablas que posee la base de datos
             objeto_mostrar.Ver_Tablas(cmbBases, cmbTablas);
-            //Habilitamos Boton
-            btnEliminarTabla.setEnabled(true);
+            
         }
 
     }//GEN-LAST:event_cmbBasesActionPerformed
 
-    private void btnEliminarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTablaActionPerformed
-        
-        try{//Inicio del try
-         //Variables contenedora de la base de datos a utilizar   
-         String sqlQuery;
-         //Variable contenedora del query
-         String sqlEliminar;
-         //Capturamos y Asignamos la base de datos
-         sqlQuery = cmbBases.getSelectedItem().toString();
-         //Creamos e instanciamos un objeto de tipo Conexion mandandole de paramtro la base de datos
-         Conexion conexion2 = new Conexion(sqlQuery);   
-         //Creamos la consulta 
-         sqlEliminar="drop table "+cmbTablas.getSelectedItem().toString();
-         //Ejecutamos la consulta
-         conexion2.setQuery(sqlEliminar);
-         //Mostramos mensale
-         JOptionPane.showMessageDialog(rootPane, "Tabla "+cmbTablas.getSelectedItem().toString()+" Eliminada exitosamente");
-         //Remuevo Tabla Eliminada
-         cmbTablas.removeItem(cmbTablas.getSelectedItem());
-        }
-        catch(Exception ex){
-            JOptionPane.showMessageDialog(rootPane, ex);
-        }
-    }//GEN-LAST:event_btnEliminarTablaActionPerformed
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ResultSet rs = null;
+
+        try {
+
+            Conexion conexion1 = new Conexion(cmbBases.getSelectedItem().toString());
+
+            if ("".equals(txtQuery.getText())) {
+                JOptionPane.showMessageDialog(null, "Editor Vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                txtQuery.requestFocus();
+            } else {
+
+                String[] statement = txtQuery.getText().split("\\s");
+                boolean isValid = analizador_lexico_db.runAnalizadorSintactico(txtQuery.getText());
+                if (isValid) {
+                    if ("select".equalsIgnoreCase(statement[0])) {
+                        conexion1.setRs(txtQuery.getText());
+                        rs = conexion1.getRs();
+                        StringBuilder sb = new StringBuilder();
+                        while (rs.next()) {
+                            sb.append(rs.getInt("id"));
+                            sb.append(" ");
+                            sb.append(rs.getString("nombre"));
+                            sb.append("\n");
+                        }
+
+                        JOptionPane.showMessageDialog(null, "Resultado: " + sb.toString(), "Info", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+                        conexion1.setQuery(txtQuery.getText());
+                        JOptionPane.showMessageDialog(null, "Ejecutado correctamente ", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Sentencia no valida", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Mostramos menu
         new Menu().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,12 +271,15 @@ public class Eliminar_Tabla extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminarTabla;
+    private javax.swing.JButton btnCrear;
     private javax.swing.JComboBox cmbBases;
     private javax.swing.JComboBox cmbTablas;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtQuery;
     // End of variables declaration//GEN-END:variables
 }

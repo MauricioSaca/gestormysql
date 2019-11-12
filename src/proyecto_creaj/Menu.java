@@ -37,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,7 +100,7 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
-        jMenu3.setText("Eliminar");
+        jMenu3.setText("Analizador");
 
         jMenuItem3.setText("Base de datos");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +110,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
-        jMenuItem4.setText("Tabla");
+        jMenuItem4.setText("Interprete");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -166,6 +167,14 @@ public class Menu extends javax.swing.JFrame {
         jMenu5.add(jMenuItem8);
 
         jMenuBar1.add(jMenu5);
+
+        jMenu8.setText("Query Editor");
+        jMenu8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu8ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu8);
 
         setJMenuBar(jMenuBar1);
 
@@ -243,6 +252,11 @@ public class Menu extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
+        new Query_Editor().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenu8ActionPerformed
+
  
     public static void main(String args[]) {//Inicio del metodo Principal
     
@@ -261,6 +275,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
